@@ -12,11 +12,11 @@ import MediaPlayer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
-                            
+    
+    var window:UIWindow?
     var alarms: Dictionary<String, Alarm> = Dictionary(minimumCapacity: 0)
     let locationManager: CLLocationManager = CLLocationManager()
     var masterViewController : MasterViewController!
-    var musicPlayer = MPMusicPlayerController.applicationMusicPlayer()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         
