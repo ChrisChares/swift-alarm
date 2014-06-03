@@ -13,9 +13,7 @@ import MediaPlayer
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
                             
-    var window: UIWindow?
-    let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-    var alarms: Alarm[] = []
+    var alarms: Dictionary<String, Alarm> = Dictionary(minimumCapacity: 0)
     let locationManager: CLLocationManager = CLLocationManager()
     var masterViewController : MasterViewController!
     var musicPlayer = MPMusicPlayerController.applicationMusicPlayer()
@@ -24,23 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         
         locationManager.delegate = self;
-    
         
-        if let array = defaults.objectForKey("alarms") as? NSMutableArray {
-            for object:AnyObject in array {
-                let alarm = object as Alarm
-                locationManager.startMonitoringForRegion(alarm.region)
-                alarms.append(alarm)
-            }
+        if ( ios8() ) {
+            locationManager.requestAlwaysAuthorization()
         }
         
-        window = application.windows[0] as UIWindow;
-        
-        let nav : UINavigationController = window!.rootViewController as UINavigationController
+        //get the master view controller
+        let nav = application.windows[0].rootViewController as UINavigationController
         masterViewController = nav.viewControllers[0] as MasterViewController
-        
-        masterViewController!.objects = alarms
-        println(masterViewController!)
         
         return true
     }
@@ -66,18 +55,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
-        var storageArray = NSMutableArray(array: alarms)
-        defaults.setObject(storageArray, forKey: "alarms")
-        defaults.synchronize()
-    }
+      }
 
     
     //New Stuff
     func addAlarm(alarm:Alarm!) {
-        alarms.append(alarm)
+        
+        alarms.updateValue(alarm, forKey: alarm.region.identifier)
         locationManager.startMonitoringForRegion(alarm.region)
         
-        triggerAlarmViewController(alarm)
         
         masterViewController!.objects.append(alarm)
         masterViewController!.tableView.reloadData()
@@ -92,9 +78,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         masterViewController.presentViewController(nav, animated: true, completion: {})
         
     }
+    
+    func alarmForRegionIdentifier(identifier:String!) -> Alarm? {
+        
+        if let alarm = alarms[identifier] as? Alarm {
+            return alarm
+        } else {
+            return nil
+        }
+        
+    }
 
     
-    
+    /*
+    iOS 8 Utility
+    */
+    func ios8() -> Bool {
+        
+        println("iOS " + UIDevice.currentDevice().systemVersion)
+        
+        if ( UIDevice.currentDevice().systemVersion == "8.0" ) {
+            return true
+        } else {
+            return false
+        }
+        
+    }
     
     
     
@@ -103,12 +112,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func locationManager(manager:CLLocationManager, didEnterRegion region:CLRegion) {
         
         println("Entered Region " + region.identifier );
+        if let alarm = alarmForRegionIdentifier(region.identifier) {
+            triggerAlarmViewController(alarm)
+        }
         
     }
     
     func locationManager(manager:CLLocationManager, didExitRegion region:CLRegion) {
         
         println("Exited Region " + region.identifier );
+        if let alarm = alarmForRegionIdentifier(region.identifier) {
+            triggerAlarmViewController(alarm)
+        }
         
     }
     
@@ -117,9 +132,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         println("Error monitoring regions " + error.memory.description);
     }
     
-    func locationManager(manager:CLLocationManager, didUpdateLocations locations:AnyObject[]) {
-        
-    }
-
 }
 

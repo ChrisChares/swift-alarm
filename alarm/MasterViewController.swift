@@ -15,18 +15,8 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
-    // #pragma mark - Segues
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier? == "showDetail" {
-            let indexPath = self.tableView.indexPathForSelectedRow()
-            let object = objects[indexPath.row] as Alarm
-           // ((segue.destinationViewController as UINavigationController).topViewController as DetailViewController).detailItem = object
-        }
-    }
 
     // #pragma mark - UITableViewDataSource
 

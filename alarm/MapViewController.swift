@@ -40,11 +40,17 @@ class MapViewController: UIViewController {
         
         if ( delegate ) {
             
-            var center = mapView.centerCoordinate
-            var mkregion = mapView.convertRect(targetView.bounds, toRegionFromView: targetView)
-            var span = mkregion.span.latitudeDelta  * 110000
+            let center = mapView.centerCoordinate
             
-            var region = CLCircularRegion(center: center, radius: span, identifier: "hurrrr")
+            let targetViewRegion = mapView.convertRect(targetView.bounds, toRegionFromView: targetView)
+            
+            //every degree of latitude delta corresponds to 110km
+            let radius = targetViewRegion.span.latitudeDelta  * 110 * 1000
+            
+            //create a random UUID
+            let uuid = NSUUID().UUIDString
+            
+            let region = CLCircularRegion(center: center, radius: radius, identifier: uuid)
             self.delegate!.returnedRegion(region)
         }
     }

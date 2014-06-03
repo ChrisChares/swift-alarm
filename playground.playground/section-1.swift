@@ -5,3 +5,13 @@ import MediaPlayer
 
 
 var str = "Hello, playground"
+
+class Derp : NSObject {
+    
+    var nav : UINavigationController?
+    
+}
+
+var derp = Derp()
+
+derp.nav!.popToRootViewControllerAnimated(true)
