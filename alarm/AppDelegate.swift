@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import MediaPlayer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var alarms: Alarm[] = []
     let locationManager: CLLocationManager = CLLocationManager()
     var masterViewController : MasterViewController?
+    var musicPlayer = MPMusicPlayerController.applicationMusicPlayer()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         
@@ -75,11 +77,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         alarms.append(alarm)
         locationManager.startMonitoringForRegion(alarm.region)
         
+        playSound(alarm.media)
+        
+        
         masterViewController!.objects.append(alarm)
         masterViewController!.tableView.reloadData()
     }
     
     
+    func playSound(media:MPMediaItem!) {
+        
+        let array = [media]
+        let collection = MPMediaItemCollection(items: array)
+        
+        musicPlayer.setQueueWithItemCollection(collection)
+        musicPlayer.play();
+        
+        
+    }
     
     
     
