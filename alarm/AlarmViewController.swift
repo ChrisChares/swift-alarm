@@ -13,7 +13,7 @@ import CoreLocation
 class AlarmViewController: UITableViewController, MPMediaPickerControllerDelegate, MapViewControllerDelegate  {
 
     /*
-    Cells & their views
+    IBOutlets
     */
     @IBOutlet var titleLabel : UITextField
     
@@ -102,9 +102,11 @@ class AlarmViewController: UITableViewController, MPMediaPickerControllerDelegat
     */
     func returnedRegion(region: CLCircularRegion) {
         
-        self.region = region;
+        
+        println(String(region.center.latitude) + "," + String(region.center.longitude) + " " + String(region.radius))
+        self.region = region
         mapCellLabel.text = "Region Selected"
-        self.navigationController.popViewControllerAnimated(true);
+        self.navigationController.popViewControllerAnimated(true)
     }
 
     

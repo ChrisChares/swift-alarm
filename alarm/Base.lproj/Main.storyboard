@@ -78,7 +78,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pyZ-aM-SSp">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pyZ-aM-SSp">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
@@ -101,7 +101,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="pyZ-aM-SSp" secondAttribute="bottom" id="AFD-jd-jS7"/>
+                            <constraint firstItem="pyZ-aM-SSp" firstAttribute="top" secondItem="k6e-ke-wMS" secondAttribute="top" id="Xvw-1Y-Su7"/>
+                            <constraint firstAttribute="trailing" secondItem="pyZ-aM-SSp" secondAttribute="trailing" id="Y82-Rg-bYh"/>
                             <constraint firstAttribute="centerX" secondItem="Nah-Hg-3VV" secondAttribute="centerX" id="eCu-Ny-bVQ"/>
+                            <constraint firstItem="pyZ-aM-SSp" firstAttribute="leading" secondItem="k6e-ke-wMS" secondAttribute="leading" id="i4K-cj-TJL"/>
                             <constraint firstAttribute="centerY" secondItem="Nah-Hg-3VV" secondAttribute="centerY" id="ywU-dW-02U"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>

@@ -99,6 +99,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
     }
     
+    func locationManager(manager:CLLocationManager, monitoringDidFailForRegion region:CLRegion, withError error:NSErrorPointer) {
+        
+        println("Error monitoring regions " + error.memory.description);
+    }
+    
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:AnyObject[]) {
         
     }
