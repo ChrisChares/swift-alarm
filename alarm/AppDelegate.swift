@@ -24,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locationManager.delegate = self;
     
         
-        if let array = defaults.objectForKey("alarms") as? Alarm[] {
-            for alarm:Alarm in array {
+        if let array = defaults.objectForKey("alarms") as? NSMutableArray {
+            for object:AnyObject in array {
+                let alarm = object as Alarm
                 locationManager.startMonitoringForRegion(alarm.region)
                 alarms.append(alarm)
             }
@@ -35,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let nav : UINavigationController = window!.rootViewController as UINavigationController
         masterViewController = nav.viewControllers[0] as MasterViewController
+        
+        masterViewController!.objects = alarms
         println(masterViewController!)
         
         return true
@@ -60,8 +63,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-      //  defaults.setObject(alarms, forKey: "alarms")
-       // defaults.synchronize()
+        
+        var storageArray = NSMutableArray(array: alarms)
+        defaults.setObject(storageArray, forKey: "alarms")
+        defaults.synchronize()
     }
 
     

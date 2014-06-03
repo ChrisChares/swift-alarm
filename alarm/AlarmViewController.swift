@@ -15,21 +15,20 @@ class AlarmViewController: UITableViewController, MPMediaPickerControllerDelegat
     /*
     Cells & their views
     */
+    @IBOutlet var titleLabel : UITextField
+    
     @IBOutlet var mapCell : UITableViewCell
+    @IBOutlet var mapCellLabel : UILabel
     
     @IBOutlet var mediaCell : UITableViewCell
     @IBOutlet var mediaImageView : UIImageView
-    
-    @IBOutlet var alarmOnEntranceCell : UITableViewCell
-    @IBOutlet var alarmOnExitCell : UITableViewCell
-    
-    
+
     /*
     Properties
     */
     
-    var _mediaItem:MPMediaItem?
-    var _region:CLCircularRegion?
+    var mediaItem:MPMediaItem?
+    var region:CLCircularRegion?
     
     
     init(style: UITableViewStyle) {
@@ -54,19 +53,14 @@ class AlarmViewController: UITableViewController, MPMediaPickerControllerDelegat
 
     @IBAction func save(sender : AnyObject) {
         
-        if ( _region == nil || _mediaItem == nil ) {
-  //          let alert = UIAlertView(title:"shit", message: "kicker", delegate: nil, cancelButtonTitle: "fuck")
-    //        alert.show()
+        if ( region == nil || mediaItem == nil || titleLabel.text.isEmpty ) {
             return
         }
         
         
-        
         let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         
-        var alarm = Alarm(_region: _region!, _media: _mediaItem!)
-        alarm.onEntry = true
-        alarm.onExit = true
+        var alarm = Alarm(title: titleLabel.text, region: region!, media: mediaItem!)
         
         appDelegate.addAlarm(alarm)
         
@@ -88,11 +82,6 @@ class AlarmViewController: UITableViewController, MPMediaPickerControllerDelegat
             mediaPicker.allowsPickingMultipleItems = false
             presentViewController(mediaPicker, animated: true, completion: {})
             
-        } else if ( cell == alarmOnEntranceCell ) {
-            
-        } else if ( cell == alarmOnExitCell ) {
-            
-            //alarmOnExitCell.accessoryType = .None
         }
         
     }
@@ -113,7 +102,8 @@ class AlarmViewController: UITableViewController, MPMediaPickerControllerDelegat
     */
     func returnedRegion(region: CLCircularRegion) {
         
-        _region = region;
+        self.region = region;
+        mapCellLabel.text = "Region Selected"
         self.navigationController.popViewControllerAnimated(true);
     }
 
@@ -129,7 +119,7 @@ class AlarmViewController: UITableViewController, MPMediaPickerControllerDelegat
             mediaImageView.hidden = false;
         }
       
-        _mediaItem = aMediaItem;
+        self.mediaItem = aMediaItem;
         //fillData(aMediaItem);
         self.dismissViewControllerAnimated(true, completion: {});
     }

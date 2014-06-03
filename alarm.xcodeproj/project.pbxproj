@@ -34,6 +34,8 @@
 /* Begin PBXFileReference section */
 		830B0783193D8E7C00DB249C /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		830B0786193D932400DB249C /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		830B0788193E63EB00DB249C /* London.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = London.gpx; sourceTree = "<group>"; };
+		830B0789193E645500DB249C /* Denver.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Denver.gpx; sourceTree = "<group>"; };
 		8350A064193D542B0029C027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8350A068193D55180029C027 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		836F4EDD193D58700065E11A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -48,7 +50,7 @@
 		83899D2B193D51E4008D6696 /* alarmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = alarmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83899D30193D51E4008D6696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83899D31193D51E4008D6696 /* alarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alarmTests.swift; sourceTree = "<group>"; };
-		83899D3B193D5229008D6696 /* playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = playground.playground; sourceTree = "<group>"; };
+		83899D3B193D5229008D6696 /* playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = playground.playground; path = ../playground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				836F4EDF193D59B80065E11A /* frameworks */,
-				83899D3B193D5229008D6696 /* playground.playground */,
 				83899D19193D51E4008D6696 /* alarm */,
 				83899D2E193D51E4008D6696 /* alarmTests */,
 				83899D18193D51E4008D6696 /* Products */,
@@ -138,7 +139,10 @@
 		83899D1A193D51E4008D6696 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				83899D3B193D5229008D6696 /* playground.playground */,
 				83899D1B193D51E4008D6696 /* Info.plist */,
+				830B0788193E63EB00DB249C /* London.gpx */,
+				830B0789193E645500DB249C /* Denver.gpx */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

@@ -12,15 +12,14 @@ import MediaPlayer
 
 class Alarm: NSObject {
    
+    var title:String
     var region:CLCircularRegion
     var media:MPMediaItem
     
-    var onEntry:Bool = false
-    var onExit:Bool = false
-    
-    init( _region:CLCircularRegion, _media:MPMediaItem ) {
-        region = _region
-        media = _media
+    init( title:String, region:CLCircularRegion, media:MPMediaItem ) {
+        self.title = title
+        self.region = region
+        self.media = media
         
     }
     
