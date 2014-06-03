@@ -54,6 +54,21 @@ class AlarmViewController: UITableViewController, MPMediaPickerControllerDelegat
 
     @IBAction func save(sender : AnyObject) {
         
+        if ( _region == nil || _mediaItem == nil ) {
+  //          let alert = UIAlertView(title:"shit", message: "kicker", delegate: nil, cancelButtonTitle: "fuck")
+    //        alert.show()
+            return
+        }
+        
+        
+        
+        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        
+        var alarm = Alarm(_region: _region!, _media: _mediaItem!)
+        alarm.onEntry = true
+        alarm.onExit = true
+        
+        appDelegate.addAlarm(alarm)
         
         navigationController.presentingViewController .dismissViewControllerAnimated(true, completion: {});
     }

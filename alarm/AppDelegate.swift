@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var alarms: Alarm[] = []
     let locationManager: CLLocationManager = CLLocationManager()
+    var masterViewController : MasterViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         
@@ -29,7 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 alarms.append(alarm)
             }
         }
-
+        
+        window = application.windows[0] as UIWindow;
+        
+        let nav : UINavigationController = window!.rootViewController as UINavigationController
+        masterViewController = nav.viewControllers[0] as MasterViewController
+        println(masterViewController!)
+        
         return true
     }
 
@@ -62,6 +69,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func addAlarm(alarm:Alarm!) {
         alarms.append(alarm)
         locationManager.startMonitoringForRegion(alarm.region)
+        
+        masterViewController!.objects.append(alarm)
+        masterViewController!.tableView.reloadData()
     }
     
     

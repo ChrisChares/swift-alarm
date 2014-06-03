@@ -15,6 +15,9 @@ class Alarm: NSObject {
     var region:CLCircularRegion
     var media:MPMediaItem
     
+    var onEntry:Bool = false
+    var onExit:Bool = false
+    
     init( _region:CLCircularRegion, _media:MPMediaItem ) {
         region = _region
         media = _media
