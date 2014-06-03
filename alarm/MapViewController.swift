@@ -19,8 +19,6 @@ protocol MapViewControllerDelegate {
 class MapViewController: UIViewController {
     
     
-    var delegate : MapViewControllerDelegate? = nil
-    
     @IBOutlet var mapView : MKMapView
     @IBOutlet var targetView : UIView
     
@@ -31,33 +29,11 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        targetView.layer.cornerRadius = 40.0
     }
 
     
     @IBAction func save(sender : AnyObject) {
-        
-        
-        if ( delegate ) {
-            
-            let center = mapView.centerCoordinate
-            
-            let targetViewRegion = mapView.convertRect(targetView.bounds, toRegionFromView: targetView)
-            
-            //every degree of latitude delta corresponds to 110km
-            let radius = targetViewRegion.span.latitudeDelta  * 110 * 1000
-            
-            //create a random UUID
-            let uuid = NSUUID().UUIDString
-            
-            let region = CLCircularRegion(center: center, radius: radius, identifier: uuid)
-            self.delegate!.returnedRegion(region)
-        }
-    }
 
-    @IBAction func cancel(sender : AnyObject) {
-        
-        self.navigationController.presentingViewController.dismissViewControllerAnimated(true, completion: {});
     }
 
 

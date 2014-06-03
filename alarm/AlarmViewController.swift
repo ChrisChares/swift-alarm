@@ -11,9 +11,6 @@ import MediaPlayer
 
 class AlarmViewController: UIViewController {
 
-    var musicPlayer = MPMusicPlayerController.applicationMusicPlayer()
-    var alarm:Alarm!
-    
     
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
@@ -22,47 +19,17 @@ class AlarmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = alarm.title
-        // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        playMedia(alarm.media)
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     
-    func playMedia(media:MPMediaItem!) {
-        
-        let array = [media]
-        let collection = MPMediaItemCollection(items: array)
-        
-        musicPlayer.setQueueWithItemCollection(collection)
-        musicPlayer.play();
-        
-        
-    }
 
     @IBAction func shutup(sender : AnyObject) {
         
-        musicPlayer.stop()
-        navigationController.presentingViewController.dismissModalViewControllerAnimated(true)
-        
-    }
-    /*
-    // #pragma mark - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
     }
-    */
+
 
 }

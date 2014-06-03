@@ -395,7 +395,7 @@
                         <outlet property="mapCellLabel" destination="XCB-Xv-rgn" id="9hs-u9-63v"/>
                         <outlet property="mediaCell" destination="g7S-P6-rck" id="why-9p-e5B"/>
                         <outlet property="mediaImageView" destination="QpJ-kb-j83" id="iqU-py-FWa"/>
-                        <outlet property="titleLabel" destination="huQ-7d-F2P" id="ayz-Iz-wXG"/>
+                        <outlet property="titleTextField" destination="huQ-7d-F2P" id="Sb1-Dq-D1W"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMC-o0-xWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
