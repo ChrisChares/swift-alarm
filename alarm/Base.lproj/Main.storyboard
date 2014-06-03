@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RMx-3f-FxP">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <scenes>
@@ -61,18 +62,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="sei-qh-JpT" kind="presentation" identifier="alarm" id="XF5-7l-mkT"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="604" y="-630"/>
         </scene>
-        <!--View Controller-->
+        <!--Alarm View Controller-->
         <scene sceneID="Q7o-My-8Go">
             <objects>
-                <viewController id="0sa-kQ-xmq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="alarm" id="0sa-kQ-xmq" customClass="AlarmViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KHr-yE-4yN"/>
                         <viewControllerLayoutGuide type="bottom" id="CV5-PJ-poa"/>
@@ -81,21 +79,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ekm-fj-eP8">
-                                <rect key="frame" x="20" y="231" width="440" height="60"/>
-                                <state key="normal" title="Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ekm-fj-eP8">
+                                <rect key="frame" x="20" y="222" width="440" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="n3A-G2-VFW"/>
+                                </constraints>
+                                <state key="normal" title="Shut up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="shutup:" destination="0sa-kQ-xmq" eventType="touchUpInside" id="azt-A4-cSv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ekm-fj-eP8" firstAttribute="leading" secondItem="FuH-Mx-hKq" secondAttribute="leading" constant="20" id="3aq-YL-UZP"/>
+                            <constraint firstAttribute="trailing" secondItem="Ekm-fj-eP8" secondAttribute="trailing" constant="20" id="49U-oO-BiC"/>
+                            <constraint firstItem="Ekm-fj-eP8" firstAttribute="top" secondItem="KHr-yE-4yN" secondAttribute="bottom" constant="158" id="l2e-HO-1FT"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="XxN-Gg-mVc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Adq-AB-scQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1989" y="-21"/>
+            <point key="canvasLocation" x="1297" y="-42"/>
         </scene>
         <!--Map View Controller - Select Location-->
         <scene sceneID="zEm-Xc-3Be">
@@ -242,10 +251,10 @@
             </objects>
             <point key="canvasLocation" x="3435" y="-239"/>
         </scene>
-        <!--Alarm View Controller - Title-->
+        <!--Alarm Creation View Controller - Title-->
         <scene sceneID="A49-Mo-KH5">
             <objects>
-                <tableViewController id="8Mf-wW-GvP" customClass="AlarmViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8Mf-wW-GvP" customClass="AlarmCreationViewController" customModule="alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="aBe-hY-yy6">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -410,24 +419,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZjP-0y-qV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1297" y="-630"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="iNd-85-UXd">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sei-qh-JpT" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CTA-se-dsI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="0sa-kQ-xmq" kind="relationship" relationship="rootViewController" id="LOY-UF-nsU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k05-iv-9Hc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1297" y="-21"/>
         </scene>
     </scenes>
 </document>

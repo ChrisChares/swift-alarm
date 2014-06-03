@@ -2,132 +2,67 @@
 //  AlarmViewController.swift
 //  alarm
 //
-//  Created by Chris Chares on 6/2/14.
+//  Created by Chris Chares on 6/3/14.
 //  Copyright (c) 2014 eunoia. All rights reserved.
 //
 
 import UIKit
 import MediaPlayer
-import CoreLocation
 
-class AlarmViewController: UITableViewController, MPMediaPickerControllerDelegate, MapViewControllerDelegate  {
+class AlarmViewController: UIViewController {
 
-    /*
-    IBOutlets
-    */
-    @IBOutlet var titleLabel : UITextField
-    
-    @IBOutlet var mapCell : UITableViewCell
-    @IBOutlet var mapCellLabel : UILabel
-    
-    @IBOutlet var mediaCell : UITableViewCell
-    @IBOutlet var mediaImageView : UIImageView
-
-    /*
-    Properties
-    */
-    
-    var mediaItem:MPMediaItem?
-    var region:CLCircularRegion?
+    var musicPlayer = MPMusicPlayerController.applicationMusicPlayer()
+    var alarm:Alarm!
     
     
-    init(style: UITableViewStyle) {
-        super.init(style: style)
-        // Custom initialization
-    }
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        title = alarm.title
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        playMedia(alarm.media)
     }
 
-
-    @IBAction func cancel(sender : AnyObject) {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func playMedia(media:MPMediaItem!) {
         
-        navigationController.presentingViewController .dismissViewControllerAnimated(true, completion: {});
+        let array = [media]
+        let collection = MPMediaItemCollection(items: array)
+        
+        musicPlayer.setQueueWithItemCollection(collection)
+        musicPlayer.play();
+        
         
     }
 
-    @IBAction func save(sender : AnyObject) {
+    @IBAction func shutup(sender : AnyObject) {
         
-        if ( region == nil || mediaItem == nil || titleLabel.text.isEmpty ) {
-            return
-        }
+        musicPlayer.stop()
+        navigationController.presentingViewController.dismissModalViewControllerAnimated(true)
         
-        
-        let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        
-        var alarm = Alarm(title: titleLabel.text, region: region!, media: mediaItem!)
-        
-        appDelegate.addAlarm(alarm)
-        
-        navigationController.presentingViewController .dismissViewControllerAnimated(true, completion: {});
     }
-
     /*
-    #pragma mark - UITableViewDelegate
-    */
-
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-    
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        if ( cell == mediaCell ) {
-            
-            let mediaPicker = MPMediaPickerController(mediaTypes: .Music)
-            mediaPicker.delegate = self
-            mediaPicker.prompt = "Select any song!"
-            mediaPicker.allowsPickingMultipleItems = false
-            presentViewController(mediaPicker, animated: true, completion: {})
-            
-        }
-        
-    }
-    
     // #pragma mark - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-
-        if ( segue!.identifier == "map" ) {
-            var mapVC = segue!.destinationViewController as MapViewController;
-            mapVC.delegate = self;
-        }
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
     }
-    
-    /*
-    MapViewControllerDelegate
     */
-    func returnedRegion(region: CLCircularRegion) {
-        
-        
-        println(String(region.center.latitude) + "," + String(region.center.longitude) + " " + String(region.radius))
-        self.region = region
-        mapCellLabel.text = "Region Selected"
-        self.navigationController.popViewControllerAnimated(true)
-    }
 
-    
-    /*
-    MPMediaPickerControllerDelegate
-    */
-    func mediaPicker(mediaPicker: MPMediaPickerController, didPickMediaItems  mediaItems:MPMediaItemCollection) -> Void
-    {
-        var aMediaItem = mediaItems.items[0] as MPMediaItem
-        if ( aMediaItem.artwork ) {
-            mediaImageView.image = aMediaItem.artwork.imageWithSize(mediaCell.contentView.bounds.size);
-            mediaImageView.hidden = false;
-        }
-      
-        self.mediaItem = aMediaItem;
-        //fillData(aMediaItem);
-        self.dismissViewControllerAnimated(true, completion: {});
-    }
-    
-    func mediaPickerDidCancel(mediaPicker: MPMediaPickerController) {
-        self.dismissViewControllerAnimated(true, completion: {});
-    }
-    
 }

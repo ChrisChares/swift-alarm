@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		830B0784193D8E7C00DB249C /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B0783193D8E7C00DB249C /* AlarmViewController.swift */; };
+		830B0784193D8E7C00DB249C /* AlarmCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B0783193D8E7C00DB249C /* AlarmCreationViewController.swift */; };
 		830B0787193D932400DB249C /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B0786193D932400DB249C /* Alarm.swift */; };
+		830B078B193E6F0B00DB249C /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B078A193E6F0B00DB249C /* AlarmViewController.swift */; };
 		8350A065193D542B0029C027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8350A064193D542B0029C027 /* MapKit.framework */; };
 		8350A069193D55180029C027 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8350A068193D55180029C027 /* MapViewController.swift */; };
 		836F4EDE193D58700065E11A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836F4EDD193D58700065E11A /* CoreLocation.framework */; };
@@ -32,10 +33,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		830B0783193D8E7C00DB249C /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
+		830B0783193D8E7C00DB249C /* AlarmCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmCreationViewController.swift; sourceTree = "<group>"; };
 		830B0786193D932400DB249C /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		830B0788193E63EB00DB249C /* London.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = London.gpx; sourceTree = "<group>"; };
 		830B0789193E645500DB249C /* Denver.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Denver.gpx; sourceTree = "<group>"; };
+		830B078A193E6F0B00DB249C /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		8350A064193D542B0029C027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8350A068193D55180029C027 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		836F4EDD193D58700065E11A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -80,7 +82,8 @@
 			children = (
 				8350A068193D55180029C027 /* MapViewController.swift */,
 				83899D1E193D51E4008D6696 /* MasterViewController.swift */,
-				830B0783193D8E7C00DB249C /* AlarmViewController.swift */,
+				830B0783193D8E7C00DB249C /* AlarmCreationViewController.swift */,
+				830B078A193E6F0B00DB249C /* AlarmViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -264,7 +267,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				83899D1F193D51E4008D6696 /* MasterViewController.swift in Sources */,
-				830B0784193D8E7C00DB249C /* AlarmViewController.swift in Sources */,
+				830B0784193D8E7C00DB249C /* AlarmCreationViewController.swift in Sources */,
+				830B078B193E6F0B00DB249C /* AlarmViewController.swift in Sources */,
 				83899D1D193D51E4008D6696 /* AppDelegate.swift in Sources */,
 				830B0787193D932400DB249C /* Alarm.swift in Sources */,
 				8350A069193D55180029C027 /* MapViewController.swift in Sources */,

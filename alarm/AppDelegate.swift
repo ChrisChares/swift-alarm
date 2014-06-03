@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var alarms: Alarm[] = []
     let locationManager: CLLocationManager = CLLocationManager()
-    var masterViewController : MasterViewController?
+    var masterViewController : MasterViewController!
     var musicPlayer = MPMusicPlayerController.applicationMusicPlayer()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
@@ -77,24 +77,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         alarms.append(alarm)
         locationManager.startMonitoringForRegion(alarm.region)
         
-        playSound(alarm.media)
-        
+        triggerAlarmViewController(alarm)
         
         masterViewController!.objects.append(alarm)
         masterViewController!.tableView.reloadData()
     }
     
-    
-    func playSound(media:MPMediaItem!) {
+    func triggerAlarmViewController(alarm:Alarm!) {
         
-        let array = [media]
-        let collection = MPMediaItemCollection(items: array)
-        
-        musicPlayer.setQueueWithItemCollection(collection)
-        musicPlayer.play();
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let alarmVC = storyboard.instantiateViewControllerWithIdentifier("alarm") as AlarmViewController
+        alarmVC.alarm = alarm
+        let nav = UINavigationController(rootViewController: alarmVC)
+        masterViewController.presentViewController(nav, animated: true, completion: {})
         
     }
+
     
     
     
