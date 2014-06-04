@@ -24,9 +24,7 @@ This is aimed at iOS developers familiar with Objective-C who are looking to exp
 
 ####Read the Damn Manual
 1. At the very least read the getting started guide in the [book](https://itunes.apple.com/us/book/the-swift-programming-language/id881256329?mt=11). 
-
 2. Install the Xcode 6 beta
-
 3. Install iOS 8 on a device
 
 ####Other resources
@@ -42,7 +40,6 @@ This is aimed at iOS developers familiar with Objective-C who are looking to exp
 Analyses of the language itself
 
 + [From a creator of Rust](http://graydon2.dreamwidth.org/5785.html)
-
 + [From Code School](http://blog.codeschool.com/post/87704128233/early-thoughts-on-swift-apples-new-programming)
 
 

@@ -1,4 +1,4 @@
-##Getting Started
+##Part 1 - Prototype
 
 ####Get the code
 
@@ -433,7 +433,7 @@ The full class is pretty self-explanatory, just make it look like this
 
 Test it using the included .gpx files.  Setup a new alarm on top of your current location, then fake your location to London or Denver.  Voila! It's making noise!
 
-##the end is only the beginning
+##The end is only the beginning
 
 There remains so much to be done.  There's no backgrounding or persistence, you can't edit or remove alarms and the UI looks like worse than the drawings of an unartistic 2nd grader.  We will continue to improve this iteratively in later posts, but for now just enjoy your first Swift app!
 
