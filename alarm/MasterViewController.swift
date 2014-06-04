@@ -36,15 +36,5 @@ class MasterViewController: UITableViewController {
         return cell
     }
 
-    // #pragma mark - UITableViewDelegate
-
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            let object = objects[indexPath.row] as Alarm
-      //      self.detailViewController!.detailItem = object
-        }
-    }
-
-
 }
 

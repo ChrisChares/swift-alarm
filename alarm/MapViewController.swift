@@ -37,7 +37,7 @@ class MapViewController: UIViewController {
     
     @IBAction func save(sender : AnyObject) {
         
-        
+        //save
         if ( delegate ) {
             
             let center = mapView.centerCoordinate
@@ -47,7 +47,7 @@ class MapViewController: UIViewController {
             //every degree of latitude delta corresponds to 110km
             let radius = targetViewRegion.span.latitudeDelta  * 110 * 1000
             
-            //create a random UUID
+            //create a unique UUID
             let uuid = NSUUID().UUIDString
             
             let region = CLCircularRegion(center: center, radius: radius, identifier: uuid)
@@ -55,10 +55,6 @@ class MapViewController: UIViewController {
         }
     }
 
-    @IBAction func cancel(sender : AnyObject) {
-        
-        self.navigationController.presentingViewController.dismissViewControllerAnimated(true, completion: {});
-    }
 
 
 }

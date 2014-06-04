@@ -47,13 +47,14 @@ class AlarmCreationViewController: UITableViewController, MPMediaPickerControlle
 
     @IBAction func cancel(sender : AnyObject) {
         
-        navigationController.presentingViewController .dismissViewControllerAnimated(true, completion: {});
+        navigationController.presentingViewController.dismissViewControllerAnimated(true, completion: {});
         
     }
 
     @IBAction func save(sender : AnyObject) {
         
         if ( region == nil || mediaItem == nil || titleLabel.text.isEmpty ) {
+            //validation failed
             return
         }
         
@@ -61,13 +62,13 @@ class AlarmCreationViewController: UITableViewController, MPMediaPickerControlle
         var alarm = Alarm(title: titleLabel.text, region: region!, media: mediaItem!)
 
         
-        navigationController.presentingViewController .dismissViewControllerAnimated(true, completion: {
+        navigationController.presentingViewController.dismissViewControllerAnimated(true, completion: {
             
             let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             
             appDelegate.addAlarm(alarm)
             
-            });
+        });
     }
 
     /*
@@ -106,7 +107,6 @@ class AlarmCreationViewController: UITableViewController, MPMediaPickerControlle
     func returnedRegion(region: CLCircularRegion) {
         
         
-        println(String(region.center.latitude) + "," + String(region.center.longitude) + " " + String(region.radius))
         self.region = region
         mapCellLabel.text = "Region Selected"
         self.navigationController.popViewControllerAnimated(true)

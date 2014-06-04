@@ -20,11 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         
-        
         locationManager.delegate = self;
         
         if ( ios8() ) {
             locationManager.requestAlwaysAuthorization()
+       
         }
         
         //get the master view controller
@@ -58,18 +58,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
       }
 
     
-    //New Stuff
+ 
     func addAlarm(alarm:Alarm!) {
         
         alarms.updateValue(alarm, forKey: alarm.region.identifier)
         locationManager.startMonitoringForRegion(alarm.region)
         
         
-        masterViewController!.objects.append(alarm)
-        masterViewController!.tableView.reloadData()
+        masterViewController.objects.append(alarm)
+        masterViewController.tableView.reloadData()
     }
     
-    func triggerAlarmViewController(alarm:Alarm!) {
+    func launchAlarmViewController(alarm:Alarm!) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let alarmVC = storyboard.instantiateViewControllerWithIdentifier("alarm") as AlarmViewController
@@ -107,13 +107,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     
     
-    //CLLocationManagerDelegate
+    //#pragma mark - CLLocationManagerDelegate
     
     func locationManager(manager:CLLocationManager, didEnterRegion region:CLRegion) {
         
         println("Entered Region " + region.identifier );
         if let alarm = alarmForRegionIdentifier(region.identifier) {
-            triggerAlarmViewController(alarm)
+            launchAlarmViewController(alarm)
         }
         
     }
@@ -122,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         println("Exited Region " + region.identifier );
         if let alarm = alarmForRegionIdentifier(region.identifier) {
-            triggerAlarmViewController(alarm)
+            launchAlarmViewController(alarm)
         }
         
     }
