@@ -2,16 +2,16 @@
 
 ####Get the code
 
-Get the code in a state that lets you follow along
+If you want the code in a state that lets you follow along
 
 `git clone -b one-start git@github.com:ChrisChares/swift-alarm.git`
 
-Or if you just want to see the finished code
+Or if you just want the finished code
 
 `git clone git@github.com:ChrisChares/swift-alarm.git`
 
 ##Overview
-As you will notice, the project is hardly empty.  6 .swift files exist, the storyboard is set up and IBOutlets are connected to their respective files.  There are also two .gpx files that will come in handy for testing location based services.  We're going to walk through and put code into the existing .swift files.
+As you will notice, the project is not empty.  6 .swift files exist, the storyboard is set up and IBOutlets are connected to their respective files.  There are also two .gpx files that will come in handy for testing location based services.  We're going to walk through and put code into the existing .swift files.
 
 ####Alarm.swift
 Our model object, it will consist of a title, the region to watch, and the music item to play.
@@ -29,6 +29,7 @@ A UITableViewController subclass that handles the creation of new alarms
 An interactive view controller for selecting the target region
 
 ##Party Time
+
 Let's go file by file and fill in the requisite properties and methods, while taking note of key syntax and differences from Obj-C.  
 
 ###Alarm.swift

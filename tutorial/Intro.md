@@ -19,7 +19,7 @@ I am by no means an expert on Swift, just discovered it yesterday along with eve
 
 This is aimed at iOS developers familiar with Objective-C who are looking to explore Swift. Beginner to intermediate iOS devs may find the building of the app itself useful, while more advanced devs will find more value in the discussions on comparisons between Swift and Objective-C.    
 
-##Swift
+##About Swift
 
 
 ####Read the Damn Manual
@@ -32,7 +32,7 @@ This is aimed at iOS developers familiar with Objective-C who are looking to exp
 ####Other resources
 
 + [We Heart Swift](http://www.weheartswift.com/) - Swift has been out for all of three days and they already have two high quality posts up.  
-+ [iOS-Blog](http://ios-blog.co.uk/tutorials/developing-ios-apps-using-swift-part-1/) - Jameson Quave is also exploring Swift and documenting his experiences
++ [iOS-Blog](http://ios-blog.co.uk/tutorials/developing-ios-apps-using-swift-part-1/) - Jameson Quave is also exploring Swift and documenting his code/experiences
 + [Ray Wanderlich's Swift Cheat Sheet](http://www.raywenderlich.com/73967/swift-cheat-sheet-and-quick-reference)
 + [How to use Cocoapods with Swift](https://medium.com/swift-programming/swift-cocoapods-da09d8ba6dd2)
 + [Chris Lattner's Homepage](http://nondot.org/sabre/) - Apple's head of Developer Tools
