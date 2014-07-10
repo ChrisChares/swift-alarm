@@ -52,7 +52,7 @@ class AlarmViewController: UIViewController {
     @IBAction func shutup(sender : AnyObject) {
         
         musicPlayer.stop()
-        navigationController.presentingViewController.dismissModalViewControllerAnimated(true)
+        navigationController.presentingViewController.dismissViewControllerAnimated(true, nil)
         
     }
 
