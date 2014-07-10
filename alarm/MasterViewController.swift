@@ -10,7 +10,7 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
-    var objects: Alarm[] = []
+    var objects: [Alarm] = []
 
 
     override func viewDidLoad() {
